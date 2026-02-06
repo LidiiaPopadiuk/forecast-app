@@ -38,7 +38,7 @@ a {
 
 .container {
   padding: 0 10px;
-  outline: red solid 2px;
+  /* outline: red solid 2px; */
   width: 100%;
   margin: 0 auto;
 }
