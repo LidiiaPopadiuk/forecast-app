@@ -1,4 +1,5 @@
 $btn-color: #ffb36c;
+$text-color: #000;
 
 .header {
   &__wrapper {
@@ -24,5 +25,20 @@ $btn-color: #ffb36c;
     height: 50px;
     border-radius: 50%;
     border: none;
+    padding: 1px;
+  }
+  &__item--link {
+    color: $text-color;
+    font-family: "Montserrat Alternates", sans-serif;;
+  }
+  &__mainwrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__authoriz {
+    display: flex;
+    align-items: center;
+    gap: 27px;
   }
 }

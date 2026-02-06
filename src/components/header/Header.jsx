@@ -6,7 +6,8 @@ export const Header = () => {
     return (
         <header className={x.header}>
             <div className="container">
-                <div className={x.header__wrapper}>
+                <div className={x.header__mainwrapp}>
+                    <div className={x.header__wrapper}>
                     <img className={x.header__logo} src={logo} alt="logo" />
                     <nav className={x.header__nav}>
                         <ul className={x.header__list}>
@@ -21,6 +22,7 @@ export const Header = () => {
                     <button className={x.header__profile}>
                         <img src={userLogin} alt="img user login" />
                     </button>
+                </div>
                 </div>
             </div>
         </header>
