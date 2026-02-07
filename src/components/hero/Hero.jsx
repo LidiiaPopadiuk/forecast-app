@@ -1,6 +1,7 @@
 import x from './Hero.module.scss'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { IoSearch } from "react-icons/io5";
+import { useFetch } from '../../hooks/useFetch';
 
 export const Hero = () => {
 
@@ -9,10 +10,21 @@ export const Hero = () => {
     const [date] = useState('13th');
     const [day] = useState('Friday');
 
+    const { inputInfo } = useFetch()
+    const inputRef = useRef(null)
+
+    const inputValue = (e) => {
+        e.preventDefault()
+
+        const infoFromInput = inputRef.current.value.trim()
+        if(!infoFromInput) return
+        inputInfo(infoFromInput)
+        inputRef.current.value = ''
+    }
+
     return (
         <div className={x.hero}>
             <div className='container'>
-               {/* <div className={x.hero__titleWrapper}> */}
                  <h1 className={x.hero__title}>Weather dashboard</h1>
                 <div className={x.hero__wrapper}>
                     <p className={x.hero__parag}>Create your personal list of favorite cities and always be aware of the weather.</p>
@@ -23,11 +35,10 @@ export const Hero = () => {
                     </div>
                 </div>
                </div>
-                <form className={x.hero__form}>
-                    <input placeholder='Search location...' className={x.hero__input} type="submite" />
+                <form onSubmit={inputValue} className={x.hero__form}>
+                    <input ref={inputRef} placeholder='Search location...' className={x.hero__input} type="text" />
                     <button className={x.hero__btn}><IoSearch /></button>
                 </form>
-            {/* </div> */}
         </div>
     )
 }
