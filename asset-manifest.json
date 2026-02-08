@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/forecast-app/static/css/main.472f3399.css",
-    "main.js": "/forecast-app/static/js/main.8029421f.js",
+    "main.css": "/forecast-app/static/css/main.df860d5f.css",
+    "main.js": "/forecast-app/static/js/main.258c0d1e.js",
     "static/media/back-hero.png": "/forecast-app/static/media/back-hero.b4015738e85a0455586b.png",
     "index.html": "/forecast-app/index.html",
-    "main.472f3399.css.map": "/forecast-app/static/css/main.472f3399.css.map",
-    "main.8029421f.js.map": "/forecast-app/static/js/main.8029421f.js.map"
+    "main.df860d5f.css.map": "/forecast-app/static/css/main.df860d5f.css.map",
+    "main.258c0d1e.js.map": "/forecast-app/static/js/main.258c0d1e.js.map"
   },
   "entrypoints": [
-    "static/css/main.472f3399.css",
-    "static/js/main.8029421f.js"
+    "static/css/main.df860d5f.css",
+    "static/js/main.258c0d1e.js"
   ]
 }
