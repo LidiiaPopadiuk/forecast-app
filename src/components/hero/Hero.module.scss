@@ -13,17 +13,11 @@ $white-color: #fff;
   &__wrapper {
     position: relative;
     left: 172px;
-    // padding-left: 40px;
     display: flex;
     align-items: flex-start;
     height: 149px;
   }
   &__bar {
-    // border: 3px solid $white-color;
-    // transform: rotate(-90deg);
-    // width: 144px;
-    // height: 0px;
-
     width: 3px;
     height: 100%;
     background-color: $white-color;
@@ -51,7 +45,8 @@ $white-color: #fff;
     border-radius: 10px;
     border: none;
     width: 585px;
-    height: 40.6px;
+    height: 42px;
+
     background: #d9d9d9;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -59,7 +54,6 @@ $white-color: #fff;
     font-weight: 500;
     font-size: 14px;
     color: #878787;
-    // padding-top: 13px;
     padding-left: 29px;
   }
   &__btn {
@@ -71,10 +65,6 @@ $white-color: #fff;
     background: #ffb36c;
   }
   &__form {
-    //   border-radius: 10px;
-    //   width: 625px;
-    //   height: 42px;
-    //   background: #d9d9d9;
     margin-top: 80px;
     display: flex;
     align-items: center;
