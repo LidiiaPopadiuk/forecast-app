@@ -40,7 +40,7 @@ export const Cards = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <img className={x.cards__img} src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png`} alt={item.weather[0].description} />
+                                    <img className={x.cards__img} src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png`} alt={item.weather[0].description} />
                                     <h2 className={x.cards__deegr}>{Math.round(item.main.temp)}°C</h2>
                                 </div>
                                 <div className={x.cards__wrapperIcons}>
