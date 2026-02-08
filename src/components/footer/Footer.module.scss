@@ -1,0 +1,51 @@
+.footer {
+  padding: 40px 0 64px;
+  background: #ffb36c;
+  &__geo {
+    width: 93px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+  }
+  &__parag {
+    text-align: left;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 103px;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  &__subtitle {
+    font-weight: 500;
+    font-size: 12px;
+    color: #000;
+    text-align: left;
+  }
+  &__btn {
+    border-radius: 50%;
+    border: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+  &__wrappbtn {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  &__image {
+    width: 384px;
+    height: 211px;
+  }
+}
+
+

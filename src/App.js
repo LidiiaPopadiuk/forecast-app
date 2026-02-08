@@ -6,6 +6,7 @@ import { useNews } from './hooks/useNews'
 import { useGallery } from './hooks/useGallery';
 import { News } from './components/news/News';
 import { Gallery } from './components/gallery/Gallery';
+import { Footer } from './components/footer/Footer';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Cards infoCity={infoCity}></Cards>
       <News petsInfo={news}></News>
       <Gallery natureInfo={nature}></Gallery>
+      <Footer></Footer>
     </div>
   );
 }
