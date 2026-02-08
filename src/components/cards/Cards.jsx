@@ -4,8 +4,8 @@ import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import x from './Cards.module.scss'
 
-export const Cards = () => {
-    const { infoCity } = useFetch()
+export const Cards = ({infoCity}) => {
+    // const { infoCity } = useFetch()
 
     return (
         <div className={x.cards}>

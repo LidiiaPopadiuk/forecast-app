@@ -3,14 +3,14 @@ import { useState, useRef } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { useFetch } from '../../hooks/useFetch';
 
-export const Hero = () => {
+export const Hero = ({inputInfo}) => {
 
     const [month] = useState('October');
     const [year] = useState('2025');
     const [date] = useState('13th');
     const [day] = useState('Friday');
 
-    const { inputInfo } = useFetch()
+    // const { inputInfo } = useFetch()
     const inputRef = useRef(null)
 
     const inputValue = (e) => {

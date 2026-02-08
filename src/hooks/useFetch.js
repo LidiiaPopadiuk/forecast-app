@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 
 export const useFetch = () => {
-  const [city, setCity] = useState("Kyiv");
+  const [city, setCity] = useState("");
   const [infoCity, setInfoCity] = useState([]);
 
   const API = useMemo(() => {
@@ -24,7 +24,7 @@ export const useFetch = () => {
       }
     };
     apiGet();
-  }, [API, city]);
+  }, [API]);
 
   useEffect(() => {
     console.log(infoCity);
