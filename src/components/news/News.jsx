@@ -10,7 +10,7 @@ export const News = ({ petsInfo }) => {
                         return (
                             <li key={index} className={x.news__item}>
                                  <img className={x.news__img} src={pet.urlToImage} alt={pet.author} />
-                                <p className={x.news__parag}><a className={x.news__link} href={pet.url}>{pet.title}</a></p>
+                                <p className={x.news__parag}><a target='_blank' className={x.news__link} href={pet.url}>{pet.title}</a></p>
                             </li>
                         )
                     })}

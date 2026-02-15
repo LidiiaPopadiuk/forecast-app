@@ -1,0 +1,41 @@
+.detail {
+    margin-bottom: 80px;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #e8e8e8;
+    border-radius: 20px;
+    padding: 40px 77px;
+    gap: 40px;
+  }
+  &__item {
+    padding: 20px 0 20px;
+    background: #d9d9d9;
+    border-radius: 10px;
+    width: 290px;
+    height: 217px;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+    margin-bottom: 10px;
+  }
+  &__degrees {
+    margin-bottom: 23px;
+    font-weight: 500;
+    font-size: 32px;
+    text-align: center;
+    color: #000;
+  }
+  &__subDegree {
+    margin-bottom: 19px;
+    font-weight: 500;
+    font-size: 32px;
+    text-align: center;
+    color: #000;
+  }
+}

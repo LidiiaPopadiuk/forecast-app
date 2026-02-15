@@ -1,0 +1,58 @@
+.week {
+  margin-bottom: 80px;
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  &__item {
+    border-radius: 10px;
+    width: 986px;
+    height: 47px;
+    background: #d9d9d9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+  }
+  &__day {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+  }
+  &__day:first-child {
+    width: 200px;
+     text-align: left;
+  }
+  &__day:last-child {
+    width: 200px;
+    text-align: right;
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 120px;
+  }
+  &__degree {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+    margin-left: 13px;
+  }
+  &__wrap {
+    border-radius: 20px;
+    padding: 26px 77px 42px;
+    background: #e8e8e8;
+  }
+}

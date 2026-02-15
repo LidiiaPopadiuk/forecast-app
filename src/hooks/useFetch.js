@@ -27,12 +27,12 @@ export const useFetch = () => {
   }, [API]);
 
   useEffect(() => {
-    console.log(infoCity);
+    console.log('infoCity', infoCity);
   }, [infoCity]);
 
   const inputInfo = (city) => {
     setCity(city);
   };
 
-  return { inputInfo, infoCity };
+  return { inputInfo, infoCity, city };
 };
