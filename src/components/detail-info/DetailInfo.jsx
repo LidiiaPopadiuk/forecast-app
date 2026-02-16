@@ -11,7 +11,7 @@ export const DetailInfo = ({ infoCity }) => {
                 <ul className={x.detail__list}>
                     {infoCity.slice(-1).map(city => {
                         return (
-                            <>
+                            <React.Fragment key={city.id}>
                                 <li className={x.detail__item}>
                                     <p className={x.detail__title}>Feels like</p>
                                     <h2 className={x.detail__degrees}>{city.main.feels_like}℃</h2>
@@ -43,7 +43,7 @@ export const DetailInfo = ({ infoCity }) => {
                                     <h2 className={x.detail__degrees}>{city.visibility}</h2>
                                     <img src={eye} alt="eye" />
                                 </li>
-                            </>
+                            </React.Fragment>
                         )
                     })}
                 </ul>

@@ -12,7 +12,7 @@ import { DetailInfo } from "./components/detail-info/DetailInfo";
 import { WeekForecast } from "./components/week-forecast/WeekForecast";
 import { HourlyForecast } from "./components/hourly-forecast/HourlyForecast";
 import "./App.css";
-import { use, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const { infoCity, inputInfo, city } = useFetch();
