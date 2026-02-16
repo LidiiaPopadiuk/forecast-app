@@ -24,15 +24,20 @@ function App() {
   const [showWeek, setShowWeek] = useState(false);
   const [showHour, setShowHour] = useState(false);
 
-  const showDetailInfo = setShowDetail((prev) => !prev);
-  const showWeekInfo = setShowWeek((prev) => !prev);
-  const showHourInfo = setShowHour((prev) => !prev);
+  const showDetailInfo = () => setShowDetail((prev) => !prev);
+  const showWeekInfo = () => setShowWeek((prev) => !prev);
+  const showHourInfo = () => setShowHour((prev) => !prev);
 
   return (
     <div className="App">
       <Header></Header>
       <Hero inputInfo={inputInfo}></Hero>
-      <Cards weekInfo={showWeekInfo} hourInfo={showHourInfo}  detailInfo={showDetailInfo} infoCity={infoCity}></Cards>
+      <Cards
+        weekInfo={showWeekInfo}
+        hourInfo={showHourInfo}
+        detailInfo={showDetailInfo}
+        infoCity={infoCity}
+      ></Cards>
       {showDetail && <DetailInfo infoCity={infoCity}></DetailInfo>}
       {showHour && <HourlyForecast hourlyWeather={forecast}></HourlyForecast>}
       <WeekForecast city={city} infoForecast={forecast}></WeekForecast>
