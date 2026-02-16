@@ -5,7 +5,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import x from './Cards.module.scss'
 
 export const Cards = ({infoCity}) => {
-    // const { infoCity } = useFetch()
 
     return (
         <div className={x.cards}>

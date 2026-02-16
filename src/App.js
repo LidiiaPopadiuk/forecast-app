@@ -17,7 +17,7 @@ function App() {
   const { infoCity, inputInfo, city } = useFetch();
   const { news } = useNews();
   const { nature } = useGallery();
-  const { forecast } = useForecast()
+  const { forecast } = useForecast(city)
 
   return (
     <div className="App">

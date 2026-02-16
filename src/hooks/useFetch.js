@@ -31,7 +31,7 @@ export const useFetch = () => {
   }, [infoCity]);
 
   const inputInfo = (city) => {
-    setCity(city);
+    setCity(city.trim());
   };
 
   return { inputInfo, infoCity, city };

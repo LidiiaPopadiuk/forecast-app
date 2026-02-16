@@ -14,7 +14,7 @@ export const DetailInfo = ({ infoCity }) => {
                             <>
                                 <li className={x.detail__item}>
                                     <p className={x.detail__title}>Feels like</p>
-                                    <h2 className={x.detail__degrees}>{city.main.temp}℃</h2>
+                                    <h2 className={x.detail__degrees}>{city.main.feels_like}℃</h2>
                                     <img src={degr} alt="degrees" />
                                 </li>
                                 <li className={x.detail__item}>
