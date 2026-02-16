@@ -2,27 +2,56 @@ import Chart from 'chart.js/auto';
 import x from './HourlyForecast.module.scss'
 import { useRef, useState, useEffect } from 'react';
 
-export const HourlyForecast = () => {
+export const HourlyForecast = ({ hourlyWeather }) => {
 
     const chartRef = useRef(null)
 
     useEffect(() => {
+
+        if (!hourlyWeather) return
+
+        const next24hours = hourlyWeather.slice(0, 8)
+
+        const labels = next24hours.map(item => {
+            const date = new Date(item.dt * 1000)
+            return date.getHours() + ":00"
+        })
+
+        const temps = next24hours.map(item => item.main.temp)
+
         const chart = new Chart(chartRef.current, {
             type: 'line',
             data: {
-                labels: ['11 pm', 'Oct 14', '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 am', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm'],
+                labels: labels,
                 datasets: [{
-                    // label: 'Hourly forecast',
-                    data: ['5℃', '10℃', '15℃', '20℃', '25℃'],
-                    fill: false,
-                    borderColor: '#ffb36c;',
-                    tension: 0.1,
-                    backgroundColor: '#e8e8e8',
+                    data: temps,
+                    borderColor: '#ff8c00',
+                    backgroundColor: '#c36c01',
+                    tension: 0.4,
+                    pointRadius: 4
                 }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        position: 'top'
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                }
             }
-        })
+        });
+
+
         return () => chart.destroy()
-    }, [])
+
+    }, [hourlyWeather])
 
     return (
         <div className={x.hour}>

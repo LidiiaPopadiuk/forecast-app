@@ -25,7 +25,7 @@ function App() {
       <Hero inputInfo={inputInfo}></Hero>
       <Cards infoCity={infoCity}></Cards>
       <DetailInfo infoCity={infoCity}></DetailInfo>
-      <HourlyForecast></HourlyForecast>
+      <HourlyForecast hourlyWeather={forecast}></HourlyForecast>
       <WeekForecast city={city} infoForecast={forecast}></WeekForecast>
       <News petsInfo={news}></News>
       <Gallery natureInfo={nature}></Gallery>
