@@ -24,7 +24,10 @@ function App() {
   const [showWeek, setShowWeek] = useState(false);
   const [showHour, setShowHour] = useState(false);
 
-  const showDetailInfo = () => setShowDetail((prev) => !prev);
+  const showDetailInfo = () => {
+    console.log("clicked see more");
+    setShowDetail((prev) => !prev);
+  };
   const showWeekInfo = () => setShowWeek((prev) => !prev);
   const showHourInfo = () => setShowHour((prev) => !prev);
 
