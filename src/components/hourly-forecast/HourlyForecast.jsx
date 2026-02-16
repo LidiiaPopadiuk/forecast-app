@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import x from './HourlyForecast.module.scss'
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export const HourlyForecast = ({ hourlyWeather }) => {
 
@@ -26,12 +26,26 @@ export const HourlyForecast = ({ hourlyWeather }) => {
                 datasets: [{
                     data: temps,
                     borderColor: '#ff8c00',
-                    backgroundColor: '#c36c01',
-                    tension: 0.4,
-                    pointRadius: 4
+                    backgroundColor: '#ff8c00',
+                    tension: 0.9,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#e27c00',
+                    pointBorderWidth: 0,
+                    borderWidth: 3,
+                    borderCapStyle: 'round',
+                    borderJoinStyle: 'round',
                 }]
             },
             options: {
+                responsive: true,
+                layout: {
+                    padding: {
+                        top: 5,
+                        left: 5,
+                        right: 5,
+                        bottom: 20
+                    }
+                },
                 plugins: {
                     legend: {
                         display: false
@@ -39,13 +53,41 @@ export const HourlyForecast = ({ hourlyWeather }) => {
                 },
                 scales: {
                     x: {
-                        position: 'top'
+                        position: 'top',
+                        grid: {
+                            color: '#b5b5b5',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 15,
+                            color: '#000',
+                            font: {
+                                weight: "500",
+                                size: 14,
+                            }
+                        }
                     },
                     y: {
-                        beginAtZero: false
+                        beginAtZero: false,
+                        grid: {
+                            color: '#b5b5b5',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 15,
+                            color: '#000',
+                            font: {
+                                weight: "500",
+                                size: 14,
+                            },
+                            callback: function (value) {
+                                return value + '°C';
+                            }
+                        }
                     }
                 }
             }
+
         });
 
 

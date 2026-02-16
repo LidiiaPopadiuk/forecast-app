@@ -9,7 +9,7 @@ export const DetailInfo = ({ infoCity }) => {
         <div className={x.detail}>
             <div className='container'>
                 <ul className={x.detail__list}>
-                    {infoCity.map(city => {
+                    {infoCity.slice(-1).map(city => {
                         return (
                             <>
                                 <li className={x.detail__item}>

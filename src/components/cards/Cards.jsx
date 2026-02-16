@@ -4,7 +4,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import x from './Cards.module.scss'
 
-export const Cards = ({infoCity}) => {
+export const Cards = ({infoCity, detailInfo, hourInfo, weekInfo}) => {
 
     return (
         <div className={x.cards}>
@@ -31,7 +31,7 @@ export const Cards = ({infoCity}) => {
                                 </div>
                                 <div className={x.cards__wrapperCentral}>
                                     <h3 className={x.cards__time}>{time}</h3>
-                                    <button className={x.cards__btn}>Hourly forecast</button>
+                                    <button onClick={hourInfo} className={x.cards__btn}>Hourly forecast</button>
                                     <div className={x.cards__wrapperDay}>
                                         <p>{fullDate}</p>
                                         <div className={x.cards__bar}></div>
@@ -45,7 +45,7 @@ export const Cards = ({infoCity}) => {
                                 <div className={x.cards__wrapperIcons}>
                                     <p><PiArrowClockwiseBold size={30}/></p>
                                     <p><FaRegHeart fill="red" size={30}/></p>
-                                    <button className={x.cards__btn}>See more</button>
+                                    <button onClick={detailInfo} className={x.cards__btn}>See more</button>
                                     <p><RiDeleteBin6Line size={30}/></p>
                                 </div>
                             </li>

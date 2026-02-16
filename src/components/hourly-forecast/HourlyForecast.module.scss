@@ -1,7 +1,13 @@
 .hour {
-    margin-bottom: 80px;
+  display: none;
+  margin-bottom: 80px;
   &__title {
     margin-bottom: 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+    margin-left: 35px;
   }
   &__wrapper {
     border-radius: 20px;
