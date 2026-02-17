@@ -2,7 +2,7 @@ import logo from '../../img/logoPng.png'
 import userLogin from '../../img/userlogin.png'
 import x from './Header.module.scss'
 
-export const Header = () => {
+export const Header = ({openModal}) => {
     return (
         <header className={x.header}>
             <div className="container">
@@ -18,7 +18,7 @@ export const Header = () => {
                     </nav>
                 </div>
                 <div className={x.header__authoriz}>
-                    <button className={x.header__sign}>Sign Up</button>
+                    <button onClick={openModal} className={x.header__sign}>Sign Up</button>
                     <button className={x.header__profile}>
                         <img src={userLogin} alt="img user login" />
                     </button>

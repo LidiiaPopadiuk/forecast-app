@@ -30,13 +30,14 @@
     width: 270px;
     gap: 20px;
   }
-  &__list > li:nth-child(n + 5) {
-    display: none;
-  }
+  // &__list > li:nth-child(n + 5) {
+  //   display: none;
+  // }
   &__list {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 20px;
   }
   &__parag {
