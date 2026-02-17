@@ -47,9 +47,9 @@ export const useNews = () => {
 
       console.log("Request for:", animal);
 
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=291747d429c64cd3a73b4b56ac5c9cf3`,
-      );
+      // const response = await axios.get(
+      //   `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=291747d429c64cd3a73b4b56ac5c9cf3`,
+      // );
 
       // const filtered = response.data.articles.filter(
       //   (item) => item.url && item.title,

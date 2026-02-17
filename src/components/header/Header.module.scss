@@ -21,6 +21,7 @@ $text-color: #000;
     border-radius: 10px;
     padding: 10px 20px;
     border: none;
+    outline: none;
   }
   &__profile {
     width: 50px;
@@ -28,10 +29,11 @@ $text-color: #000;
     border-radius: 50%;
     border: none;
     padding: 1px;
+    outline: none;
   }
   &__item--link {
     color: $text-color;
-    font-family: "Montserrat Alternates", sans-serif;;
+    font-family: "Montserrat Alternates", sans-serif;
   }
   &__mainwrapp {
     display: flex;
@@ -42,5 +44,11 @@ $text-color: #000;
     display: flex;
     align-items: center;
     gap: 27px;
+  }
+  &__username {
+    // font-weight: 500;
+    // font-size: 12px;
+    color: #000;
+    font-family: "Montserrat Alternates", sans-serif;
   }
 }

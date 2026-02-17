@@ -35,7 +35,7 @@
     height: 50px;
     font-weight: 500;
     font-size: 14px;
-    color: #ababab;
+    color: #888888;
     padding: 17px 0 16px 20px;
     border: none;
     margin-bottom: 30px;
@@ -48,7 +48,9 @@
     height: 50px;
     font-weight: 500;
     font-size: 14px;
-    color: #ababab;
+    color: #888888;
+
+    // color: #ababab;
     padding: 17px 0 16px 20px;
     border: none;
     margin-bottom: 35px;
@@ -67,5 +69,10 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+  }
+  &__input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #e4e4e4 inset;
+    -webkit-text-fill-color: #888888;
+    transition: background-color 5000s ease-in-out;
   }
 }
