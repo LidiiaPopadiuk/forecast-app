@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/forecast-app/static/css/main.12ad7f26.css",
-    "main.js": "/forecast-app/static/js/main.d4a50dfe.js",
+    "main.css": "/forecast-app/static/css/main.8403a520.css",
+    "main.js": "/forecast-app/static/js/main.4d1b62b9.js",
     "static/media/back-hero.png": "/forecast-app/static/media/back-hero.b4015738e85a0455586b.png",
     "static/media/press.svg": "/forecast-app/static/media/press.f689ea8a0aa3fa37d1014b0406e6ab0d.svg",
     "static/media/whatsapp.svg": "/forecast-app/static/media/whatsapp.65dd5480fea7f6f399c2ae110845582c.svg",
@@ -11,12 +11,13 @@
     "static/media/rain.svg": "/forecast-app/static/media/rain.e471488c2d4e075ceaa592cfa09c0289.svg",
     "static/media/wind.svg": "/forecast-app/static/media/wind.cc649248e47d291c38f1d5e030e6f081.svg",
     "static/media/facebb.svg": "/forecast-app/static/media/facebb.4cc87fe3158bdfa7086cdc410dc67e75.svg",
+    "static/media/no-image.png": "/forecast-app/static/media/no-image.ebbc7b17947644e301a0.png",
     "index.html": "/forecast-app/index.html",
-    "main.12ad7f26.css.map": "/forecast-app/static/css/main.12ad7f26.css.map",
-    "main.d4a50dfe.js.map": "/forecast-app/static/js/main.d4a50dfe.js.map"
+    "main.8403a520.css.map": "/forecast-app/static/css/main.8403a520.css.map",
+    "main.4d1b62b9.js.map": "/forecast-app/static/js/main.4d1b62b9.js.map"
   },
   "entrypoints": [
-    "static/css/main.12ad7f26.css",
-    "static/js/main.d4a50dfe.js"
+    "static/css/main.8403a520.css",
+    "static/js/main.4d1b62b9.js"
   ]
 }
