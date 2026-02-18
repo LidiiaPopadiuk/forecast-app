@@ -27,12 +27,28 @@ export const useFetch = () => {
   }, [API]);
 
   useEffect(() => {
-    console.log('infoCity', infoCity);
+    console.log("infoCity", infoCity);
   }, [infoCity]);
 
   const inputInfo = (city) => {
     setCity(city.trim());
   };
 
-  return { inputInfo, infoCity, city };
+  const refreshCity = async (cityName) => {
+    try {
+      const infoFetch = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=279a527299229b9ffb9e0697e0774806&units=metric&lang=en`,
+      );
+
+      setInfoCity((prev) =>
+        prev.map((city) =>
+          city.name === infoFetch.data.name ? { ...infoFetch.data, refreshTime: Date.now() } : city,
+        ),
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return { inputInfo, infoCity, city, refreshCity };
 };

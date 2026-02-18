@@ -22,7 +22,7 @@ export const WeekForecast = ({ infoForecast }) => {
                             const maxTemp = Math.max(...temps)
 
                             return (
-                                <li className={x.week__item}>
+                                <li key={index} className={x.week__item}>
                                     <p className={x.week__day}>
                                         {date.toLocaleDateString("en-US", {
                                             weekday: "short",

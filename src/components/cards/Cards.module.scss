@@ -12,7 +12,7 @@ $text: #000;
     gap: 90px;
   }
   &__item {
-    padding: 15px 30px 20px;
+    padding: 17px 30px 20px;
     width: 320px;
     height: 430px;
     border-radius: 20px;
@@ -26,9 +26,9 @@ $text: #000;
     font-weight: 500;
     font-size: 10px;
     color: $text;
-    margin-bottom: 15px;
-    margin-right: 23px;
-    margin-left: 23px;
+    // margin-bottom: 15px;
+    // margin-right: 23px;
+    // margin-left: 23px;
   }
   &__wrapperCity {
     display: flex;
@@ -67,12 +67,19 @@ $text: #000;
     color: $text;
   }
   &__img {
-    width: 145px;
-    height: 145px;
+    width: 150px;
+    height: 150px;
   }
   &__wrapperIcons {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+  }
+  &__btnwrapper {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 15px;
   }
 }

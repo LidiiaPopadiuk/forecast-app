@@ -27,22 +27,23 @@ function App() {
   const [userName, setUserName] = useState(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const loginTime = localStorage.getItem("loginTime");
+    // const storedName = localStorage.getItem("")
 
-    if(!isLoggedIn || !loginTime) return ''
+    if (!isLoggedIn || !loginTime) return "";
 
     const now = Date.now();
     const fifteenDays = 15 * 24 * 60 * 60 * 1000;
 
-    if (now - Number(loginTime > fifteenDays)) {
+    if (now - Number(loginTime) > fifteenDays) {
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("loginTime");
-      return ''
+      return "";
     }
 
     return localStorage.getItem("userName" || "");
   });
 
-  const { infoCity, inputInfo, city } = useFetch();
+  const { infoCity, inputInfo, city, refreshCity } = useFetch();
   const { news, addPage, isLoading } = useNews();
   const { nature } = useGallery();
   const { forecast } = useForecast(city);
@@ -73,14 +74,13 @@ function App() {
     }
   };
 
-  useEffect(
-    () => {
-      document.addEventListener("keydown", keyDown);
-    },
-    () => {
+  useEffect(() => {
+    document.addEventListener("keydown", keyDown);
+
+    return () => {
       document.removeEventListener("keydown", keyDown);
-    },
-  );
+    };
+  }, []);
 
   const showDetailInfo = () => {
     console.log("clicked see more");
@@ -117,7 +117,12 @@ function App() {
           closeModal={closeSignUpModal}
         ></SignUp>
       )}
-      {isSignInOpen && <SignIn setUserName={setUserName} closeModal={closeSignInModal}></SignIn>}
+      {isSignInOpen && (
+        <SignIn
+          setUserName={setUserName}
+          closeModal={closeSignInModal}
+        ></SignIn>
+      )}
       {isEditInfoModal && (
         <EditInfoModal
           setUserName={setUserName}
@@ -125,14 +130,16 @@ function App() {
         ></EditInfoModal>
       )}
       <Cards
-        weekInfo={showWeekInfo}
+        // weekInfo={showWeekInfo}
+        refreshCity={refreshCity}
+        userName={userName}
         hourInfo={showHourInfo}
         detailInfo={showDetailInfo}
         infoCity={infoCity}
       ></Cards>
       {showDetail && <DetailInfo infoCity={infoCity}></DetailInfo>}
       {showHour && <HourlyForecast hourlyWeather={forecast}></HourlyForecast>}
-      <WeekForecast city={city} infoForecast={forecast}></WeekForecast>
+      {showWeek && <WeekForecast city={city} infoForecast={forecast}></WeekForecast>}
       <News isLoading={isLoading} addPage={addPage} petsInfo={news}></News>
       <Gallery natureInfo={nature}></Gallery>
       <Footer></Footer>
