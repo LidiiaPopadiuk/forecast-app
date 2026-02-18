@@ -17,7 +17,7 @@ export const useFetch = () => {
         const infoFetch = await axios.get(API);
         setInfoCity((prev) => {
           if (prev.some((n) => n.name === infoFetch.data.name)) return prev;
-          return [...prev, infoFetch.data];
+          return [...prev, { ...infoFetch.data, id: Date.now(), refreshTime: Date.now() }];
         });
       } catch (err) {
         console.log(err);
@@ -42,7 +42,7 @@ export const useFetch = () => {
 
       setInfoCity((prev) =>
         prev.map((city) =>
-          city.name === infoFetch.data.name ? { ...infoFetch.data, refreshTime: Date.now() } : city,
+          city.name === infoFetch.data.name ? { ...infoFetch.data, refreshTime: Date.now(), id: city.id } : city,
         ),
       );
     } catch (err) {

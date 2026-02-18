@@ -1,6 +1,8 @@
 import x from './WeekForecast.module.scss'
 export const WeekForecast = ({ infoForecast }) => {
 
+    if (!infoForecast || infoForecast.length === 0) return null
+
     const dailyForecast = infoForecast.filter((_, index) => index % 8 === 0)
 
     return (

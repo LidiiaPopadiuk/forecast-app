@@ -16,6 +16,7 @@ import { SignIn } from "./components/modals/SignIn";
 import { EditInfoModal } from "./components/modalEditInfo/EditInfoModal";
 import "./App.css";
 import { useState, useEffect } from "react";
+import { CardItem } from "./components/cards/CardItem";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,6 +25,7 @@ function App() {
   const [showDetail, setShowDetail] = useState(false);
   const [showWeek, setShowWeek] = useState(false);
   const [showHour, setShowHour] = useState(false);
+  const [activeCity, setActiveCity] = useState(null)
   const [userName, setUserName] = useState(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const loginTime = localStorage.getItem("loginTime");
@@ -46,7 +48,7 @@ function App() {
   const { infoCity, inputInfo, city, refreshCity } = useFetch();
   const { news, addPage, isLoading } = useNews();
   const { nature } = useGallery();
-  const { forecast } = useForecast(city);
+  const { forecast } = useForecast(activeCity ? activeCity.name : "");
 
   // useEffect(() => {
   //   if (userName) {
@@ -130,16 +132,19 @@ function App() {
         ></EditInfoModal>
       )}
       <Cards
-        // weekInfo={showWeekInfo}
+      setActiveCity={setActiveCity}
+        weekInfo={showWeekInfo}
         refreshCity={refreshCity}
         userName={userName}
         hourInfo={showHourInfo}
         detailInfo={showDetailInfo}
         infoCity={infoCity}
       ></Cards>
-      {showDetail && <DetailInfo infoCity={infoCity}></DetailInfo>}
-      {showHour && <HourlyForecast hourlyWeather={forecast}></HourlyForecast>}
-      {showWeek && <WeekForecast city={city} infoForecast={forecast}></WeekForecast>}
+      {showDetail && activeCity && <DetailInfo city={activeCity} forecast={forecast} infoCity={infoCity}></DetailInfo>}
+      {showHour && forecast && forecast.length > 0 && <HourlyForecast hourlyWeather={forecast}></HourlyForecast>}
+      {showWeek && forecast && forecast.length > 0 && (
+        <WeekForecast city={city} infoForecast={forecast}></WeekForecast>
+      )}
       <News isLoading={isLoading} addPage={addPage} petsInfo={news}></News>
       <Gallery natureInfo={nature}></Gallery>
       <Footer></Footer>

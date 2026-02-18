@@ -7,8 +7,10 @@ export const HourlyForecast = ({ hourlyWeather }) => {
     const chartRef = useRef(null)
 
     useEffect(() => {
+        
+        if (!hourlyWeather || hourlyWeather.length === 0) return null
 
-        if (!hourlyWeather) return
+        // if (!hourlyWeather) return
 
         const next24hours = hourlyWeather.slice(0, 8)
 
