@@ -1,8 +1,46 @@
 .gall {
+  padding-bottom: 48px;
   &__title {
     font-weight: 500;
     font-size: 20px;
     color: #000;
     text-align: left;
+    padding-bottom: 40px;
   }
+  &__img {
+    height: 300px;
+    border-radius: 10px;
+  }
+}
+
+:global(.swiper) {
+  --swiper-theme-color: #ffb36c;
+}
+
+.swiper {
+  width: 100%;
+  padding: 60px 0;
+}
+
+.swiper-slide {
+  width: 400px;
+  height: 350px;
+  transition: 0.4s ease;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.swiper-slide {
+  opacity: 0.4;
+  transform: scale(0.85);
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
 }

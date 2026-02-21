@@ -2,10 +2,24 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 export const useGallery = () => {
   const [nature, setNature] = useState([]);
+  const [qImg, setQImg] = useState("");
+
+  const qRequests = ["nature", "ocean", "river", "forest", "mountain", "cave"];
+
+  useEffect(() => {
+    const savedIndex = localStorage.getItem("qImg");
+    const currentIndex = savedIndex ? Number(savedIndex) : 0;
+    const nextIndex = (currentIndex + 1) % qRequests.length;
+    localStorage.setItem("qImg", nextIndex);
+
+    setQImg(qRequests[currentIndex]);
+  }, []);
+
   const API =
-    "https://pixabay.com/api/?key=53835167-c7d1482498fed66d7f39b6868&q=nature";
+    `https://pixabay.com/api/?key=53835167-c7d1482498fed66d7f39b6868&per_page=8&min_width=450&q=${qImg}`;
 
   const getAPI = async () => {
+    if (!qImg) return;
     try {
       const nature = await axios.get(API);
       setNature(nature.data.hits);
@@ -20,7 +34,7 @@ export const useGallery = () => {
 
   useEffect(() => {
     getAPI();
-  }, []);
+  }, [qImg]);
 
   return { nature };
 };
