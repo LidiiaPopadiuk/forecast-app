@@ -15,14 +15,19 @@ export const useGallery = () => {
     setQImg(qRequests[currentIndex]);
   }, []);
 
-  const API =
-    `https://pixabay.com/api/?key=53835167-c7d1482498fed66d7f39b6868&per_page=8&min_width=450&q=${qImg}`;
+  const API = `https://pixabay.com/api/?key=53835167-c7d1482498fed66d7f39b6868&per_page=8&min_width=450&q=${qImg}`;
 
   const getAPI = async () => {
     if (!qImg) return;
     try {
       const nature = await axios.get(API);
-      setNature(nature.data.hits);
+
+      const filtered = nature.data.hits.filter(
+        (img) => img.imageWidth >= 800 && img.imageWidth > img.imageHeight,
+      );
+      setNature(filtered);
+
+      // setNature(nature.data.hits);
     } catch (err) {
       console.log(err);
     }

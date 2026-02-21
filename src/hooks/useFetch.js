@@ -3,7 +3,15 @@ import axios from "axios";
 
 export const useFetch = () => {
   const [city, setCity] = useState("");
-  const [infoCity, setInfoCity] = useState([]);
+  const [infoCity, setInfoCity] = useState(() => {
+    try {
+      const saved = localStorage.getItem("cards")
+    return saved ? JSON.parse(saved) : []
+    } catch (err) {
+      localStorage.removeItem('cards')
+      return []
+    }
+  });
 
   const API = useMemo(() => {
     return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=279a527299229b9ffb9e0697e0774806&units=metric&lang=en`;
@@ -28,6 +36,7 @@ export const useFetch = () => {
 
   useEffect(() => {
     console.log("infoCity", infoCity);
+    localStorage.setItem('cards', JSON.stringify(infoCity))
   }, [infoCity]);
 
   const inputInfo = (city) => {
@@ -50,5 +59,9 @@ export const useFetch = () => {
     }
   };
 
-  return { inputInfo, infoCity, city, refreshCity };
+  const deleteCity = (name) => {
+    setInfoCity((prev) => prev.filter((city) => city.name !== name))
+  }
+
+  return { inputInfo, infoCity, city, refreshCity, deleteCity };
 };

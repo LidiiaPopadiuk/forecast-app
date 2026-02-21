@@ -45,7 +45,7 @@ function App() {
     return localStorage.getItem("userName" || "");
   });
 
-  const { infoCity, inputInfo, city, refreshCity } = useFetch();
+  const { infoCity, inputInfo, city, refreshCity, deleteCity } = useFetch();
   const { news, addPage, isLoading } = useNews();
   const { nature } = useGallery();
   const { forecast } = useForecast(activeCity ? activeCity.name : "");
@@ -132,6 +132,7 @@ function App() {
         ></EditInfoModal>
       )}
       <Cards
+      deleteCity={deleteCity}
       setActiveCity={setActiveCity}
         weekInfo={showWeekInfo}
         refreshCity={refreshCity}

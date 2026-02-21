@@ -6,7 +6,7 @@ import { memo } from "react";
 import { CardItem } from "./CardItem";
 import x from './Cards.module.scss'
 
-export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refreshCity, setActiveCity }) => {
+export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refreshCity, setActiveCity, deleteCity }) => {
 
     // const Carditem = memo(({ item }) => {
     // const utc = (item.refreshTime || Date.now()) + new Date().getTimezoneOffset() * 60000;
@@ -72,7 +72,7 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                         setActiveCity(item)
                                         detailInfo()
                                     }} className={x.cards__btn}>See more</button>
-                                    <p><RiDeleteBin6Line size={30} /></p>
+                                    <p onClick={() => deleteCity(item.name)}><RiDeleteBin6Line size={30} /></p>
                                 </div>
                             </li>
                         )
