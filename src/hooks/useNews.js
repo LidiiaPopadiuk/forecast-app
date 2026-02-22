@@ -135,13 +135,13 @@ export const useNews = () => {
 
       console.log("Request for:", animal);
 
-      // const response = await axios.get(
-      //   `https://gnews.io/api/v4/search?q=${animal}&page=${page}&lang=en&max=4&apikey=adf55da63854e7af9c4124c0888be32c`,
-      // );
-
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=348fa51489394eb6a7b395e89f425af3`,
+        `https://gnews.io/api/v4/search?q=${animal}&page=${page}&lang=en&max=4&apikey=adf55da63854e7af9c4124c0888be32c`,
       );
+
+      // const response = await axios.get(
+      //   `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=348fa51489394eb6a7b395e89f425af3`,
+      // );
 
       // const filtered = response.data.articles.filter(
       //   (item) => item.url && item.title,
