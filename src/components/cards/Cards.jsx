@@ -2,11 +2,13 @@ import { useFetch } from "../../hooks/useFetch"
 import { PiArrowClockwiseBold } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaHeart } from "react-icons/fa";
 import { memo } from "react";
 import { CardItem } from "./CardItem";
 import x from './Cards.module.scss'
+import { ToastContainer, toast } from 'react-toastify';
 
-export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refreshCity, setActiveCity, deleteCity }) => {
+export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refreshCity, setActiveCity, deleteCity, likeCity }) => {
 
     // const Carditem = memo(({ item }) => {
     // const utc = (item.refreshTime || Date.now()) + new Date().getTimezoneOffset() * 60000;
@@ -26,6 +28,9 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
             <div className="container">
                 <ul className={x.cards__list}>
                     {infoCity.map(item => {
+                        // const loginInfo = localStorage.getItem("isLoggedIn")
+                        // const notifyLogin = () => toast('Register or Log In')
+
                         const utc = (item.refreshTime || Date.now()) + new Date().getTimezoneOffset() * 60000;
                         const localTime = utc + item.timezone * 1000;
                         const date = new Date(localTime);
@@ -67,7 +72,8 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                 </div>
                                 <div className={x.cards__wrapperIcons}>
                                     <p onClick={() => refreshCity(item.name)}><PiArrowClockwiseBold size={30} /></p>
-                                    <p><FaRegHeart fill="red" size={30} /></p>
+                                    <p onClick={() => likeCity(item.name)}><ToastContainer />
+                                        {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" size={30} />}</p>
                                     <button onClick={() => {
                                         setActiveCity(item)
                                         detailInfo()

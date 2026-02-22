@@ -1,15 +1,16 @@
 import { useState, useMemo, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
-export const useFetch = () => {
+export const useFetch = (userName) => {
   const [city, setCity] = useState("");
   const [infoCity, setInfoCity] = useState(() => {
     try {
-      const saved = localStorage.getItem("cards")
-    return saved ? JSON.parse(saved) : []
+      const saved = localStorage.getItem("cards");
+      return saved ? JSON.parse(saved) : [];
     } catch (err) {
-      localStorage.removeItem('cards')
-      return []
+      localStorage.removeItem("cards");
+      return [];
     }
   });
 
@@ -25,7 +26,10 @@ export const useFetch = () => {
         const infoFetch = await axios.get(API);
         setInfoCity((prev) => {
           if (prev.some((n) => n.name === infoFetch.data.name)) return prev;
-          return [...prev, { ...infoFetch.data, id: Date.now(), refreshTime: Date.now() }];
+          return [
+            ...prev,
+            { ...infoFetch.data, id: Date.now(), refreshTime: Date.now() },
+          ];
         });
       } catch (err) {
         console.log(err);
@@ -36,8 +40,17 @@ export const useFetch = () => {
 
   useEffect(() => {
     console.log("infoCity", infoCity);
-    localStorage.setItem('cards', JSON.stringify(infoCity))
+    localStorage.setItem("cards", JSON.stringify(infoCity));
   }, [infoCity]);
+
+  useEffect(() => {
+    if (userName) {
+      const saved = localStorage.getItem("cards");
+      if (saved) setInfoCity(JSON.parse(saved));
+    } else {
+      setInfoCity((prev) => prev.map(city => ({...city, isLiked: false})))
+    }
+  }, [userName]);
 
   const inputInfo = (city) => {
     setCity(city.trim());
@@ -51,7 +64,9 @@ export const useFetch = () => {
 
       setInfoCity((prev) =>
         prev.map((city) =>
-          city.name === infoFetch.data.name ? { ...infoFetch.data, refreshTime: Date.now(), id: city.id } : city,
+          city.name === infoFetch.data.name
+            ? { ...infoFetch.data, refreshTime: Date.now(), id: city.id }
+            : city,
         ),
       );
     } catch (err) {
@@ -60,8 +75,39 @@ export const useFetch = () => {
   };
 
   const deleteCity = (name) => {
-    setInfoCity((prev) => prev.filter((city) => city.name !== name))
-  }
+    setInfoCity((prev) => prev.filter((city) => city.name !== name));
+  };
 
-  return { inputInfo, infoCity, city, refreshCity, deleteCity };
+  const likeCity = (name) => {
+    const notifyLogin = () => toast("Register or Log In");
+    const loginInfo = localStorage.getItem("isLoggedIn");
+
+    if (loginInfo) {
+      setInfoCity((prev) => {
+        const index = prev.findIndex((city) => city.name === name);
+        if (index === -1) return prev;
+
+        const updated = [...prev];
+        const [selectedCity] = updated.splice(index, 1);
+
+        const newCity = {
+          ...selectedCity,
+          isLiked: !selectedCity.isLiked,
+          savedIndex: selectedCity.savedIndex ? selectedCity.savedIndex : index,
+        };
+
+        if (newCity.isLiked) {
+          updated.unshift(newCity);
+        } else {
+          updated.splice(newCity.savedIndex, 0, newCity);
+        }
+
+        return updated;
+      });
+    } else {
+      notifyLogin();
+    }
+  };
+
+  return { inputInfo, infoCity, city, refreshCity, deleteCity, likeCity };
 };

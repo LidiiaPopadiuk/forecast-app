@@ -25,7 +25,7 @@ function App() {
   const [showDetail, setShowDetail] = useState(false);
   const [showWeek, setShowWeek] = useState(false);
   const [showHour, setShowHour] = useState(false);
-  const [activeCity, setActiveCity] = useState(null)
+  const [activeCity, setActiveCity] = useState(null);
   const [userName, setUserName] = useState(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const loginTime = localStorage.getItem("loginTime");
@@ -45,7 +45,8 @@ function App() {
     return localStorage.getItem("userName" || "");
   });
 
-  const { infoCity, inputInfo, city, refreshCity, deleteCity } = useFetch();
+  const { infoCity, inputInfo, city, refreshCity, deleteCity, likeCity } =
+    useFetch(userName);
   const { news, addPage, isLoading } = useNews();
   const { nature } = useGallery();
   const { forecast } = useForecast(activeCity ? activeCity.name : "");
@@ -132,8 +133,9 @@ function App() {
         ></EditInfoModal>
       )}
       <Cards
-      deleteCity={deleteCity}
-      setActiveCity={setActiveCity}
+        likeCity={likeCity}
+        deleteCity={deleteCity}
+        setActiveCity={setActiveCity}
         weekInfo={showWeekInfo}
         refreshCity={refreshCity}
         userName={userName}
@@ -141,8 +143,16 @@ function App() {
         detailInfo={showDetailInfo}
         infoCity={infoCity}
       ></Cards>
-      {showDetail && activeCity && <DetailInfo city={activeCity} forecast={forecast} infoCity={infoCity}></DetailInfo>}
-      {showHour && forecast && forecast.length > 0 && <HourlyForecast hourlyWeather={forecast}></HourlyForecast>}
+      {showDetail && activeCity && (
+        <DetailInfo
+          city={activeCity}
+          forecast={forecast}
+          infoCity={infoCity}
+        ></DetailInfo>
+      )}
+      {showHour && forecast && forecast.length > 0 && (
+        <HourlyForecast hourlyWeather={forecast}></HourlyForecast>
+      )}
       {showWeek && forecast && forecast.length > 0 && (
         <WeekForecast city={city} infoForecast={forecast}></WeekForecast>
       )}
