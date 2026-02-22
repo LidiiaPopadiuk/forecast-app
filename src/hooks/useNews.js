@@ -116,10 +116,10 @@ export const useNews = () => {
     setAnimal(qRequests[currentIndex]);
   }, []);
 
-  // const whatAnimal = () => {
-  //   const randomIndex = Math.floor(Math.random() * qRequests.length)
-  //   return qRequests[randomIndex]
-  // }
+  const whatAnimal = () => {
+    const randomIndex = Math.floor(Math.random() * qRequests.length)
+    return qRequests[randomIndex]
+  }
 
   // const API =
   //   `https://newsapi.org/v2/everything?q=${whatAnimal()}&language=en&apiKey=291747d429c64cd3a73b4b56ac5c9cf3`;
@@ -139,16 +139,16 @@ export const useNews = () => {
       //   `https://gnews.io/api/v4/search?q=${animal}&page=${page}&lang=en&max=4&apikey=adf55da63854e7af9c4124c0888be32c`,
       // );
 
-      // const response = await axios.get(
-      //   `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=291747d429c64cd3a73b4b56ac5c9cf3`,
-      // );
+      const response = await axios.get(
+        `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=348fa51489394eb6a7b395e89f425af3`,
+      );
 
       // const filtered = response.data.articles.filter(
       //   (item) => item.url && item.title,
       // );
 
       // setNews((prev) => [...prev, ...filtered]);
-      // setNews((prev) => [...prev, ...response.data.articles]);
+      setNews((prev) => [...prev, ...response.data.articles]);
       setIsLoading(false);
     } catch (err) {
       console.log(err);
