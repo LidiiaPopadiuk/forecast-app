@@ -11,8 +11,8 @@ export const News = ({ petsInfo, addPage, isLoading }) => {
                         return (
                             <li key={index} className={x.news__item}>
                                 <a target='_blank' className={x.news__link} href={pet.url}>
-                                    <img className={x.news__img} src={pet.image || imageNo} alt={pet.title} />
-                                    <p className={x.news__parag}>{pet.title}</p>
+                                    <img className={x.news__img} src={pet.largeImageURL || imageNo} alt={pet.title} />
+                                    <p className={x.news__parag}>{pet.tags}</p>
                                 </a>
                             </li>
                         )

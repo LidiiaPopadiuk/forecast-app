@@ -136,8 +136,12 @@ export const useNews = () => {
       console.log("Request for:", animal);
 
       const response = await axios.get(
-        `https://gnews.io/api/v4/search?q=${animal}&page=${page}&lang=en&max=4&apikey=adf55da63854e7af9c4124c0888be32c`,
+        `https://pixabay.com/api/?key=53835167-c7d1482498fed66d7f39b6868&per_page=8&min_width=450&per_page=4&page=${page}&q=${animal}`,
       );
+
+      // const response = await axios.get(
+      //   `https://gnews.io/api/v4/search?q=${animal}&page=${page}&lang=en&max=4&apikey=adf55da63854e7af9c4124c0888be32c`,
+      // );
 
       // const response = await axios.get(
       //   `https://newsapi.org/v2/everything?q=${animal}&pageSize=4&page=${page}&language=en&apiKey=348fa51489394eb6a7b395e89f425af3`,
@@ -148,7 +152,9 @@ export const useNews = () => {
       // );
 
       // setNews((prev) => [...prev, ...filtered]);
-      setNews((prev) => [...prev, ...response.data.articles]);
+      // setNews((prev) => [...prev, ...response.data.articles]);
+      setNews((prev) => [...prev, ...response.data.hits]);
+
       setIsLoading(false);
     } catch (err) {
       console.log(err);
