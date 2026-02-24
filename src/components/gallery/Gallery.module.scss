@@ -1,4 +1,5 @@
 .gall {
+  display: none;
   padding-bottom: 48px;
   &__title {
     font-weight: 500;
@@ -43,4 +44,10 @@
 .swiper-slide-active {
   opacity: 1;
   transform: scale(1);
+}
+
+@media (min-width: 1440px) {
+  .gall {
+    display: block;
+  }
 }
