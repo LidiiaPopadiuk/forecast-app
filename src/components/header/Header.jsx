@@ -1,6 +1,8 @@
 import { use, useRef, useState } from 'react'
 import logo from '../../img/logoPng.png'
 import userLogin from '../../img/userlogin.png'
+import { SlArrowDown } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
 import x from './Header.module.scss'
 
 export const Header = ({ openModal, userName, openSignInModal, openEditInfoModal }) => {
@@ -40,9 +42,7 @@ export const Header = ({ openModal, userName, openSignInModal, openEditInfoModal
 
                         <div onClick={toggleMenu} className={x.header__menuWrapper}>
                             <a className={x.header__menu}>Menu</a>
-                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 0.5L4.74264 4.74264L8.98528 0.5" stroke="black" stroke-linecap="round" />
-                            </svg>
+                            {isOpen ? <SlArrowRight size={10}/> : <SlArrowDown size={10}/>}
                         </div>
                     </div>
                     <div className={x.header__authoriz}>
