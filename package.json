@@ -12,6 +12,7 @@
     "axios": "^1.13.4",
     "chart.js": "^4.5.1",
     "gh-pages": "^6.3.0",
+    "motion": "^12.34.3",
     "normalize.css": "^8.0.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

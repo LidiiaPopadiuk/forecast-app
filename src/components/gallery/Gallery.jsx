@@ -1,13 +1,11 @@
 import x from './Gallery.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 
-// import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 export const Gallery = ({ natureInfo }) => {
     return (

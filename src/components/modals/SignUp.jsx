@@ -1,14 +1,10 @@
 import x from './SignUp.module.scss'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 export const SignUp = ({ closeModal, openModal, setUserName }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    // const nameRef = useRef(null)
-    // const emailRef = useRef(null)
-    // const passwordRef = useRef(null)
 
     const isFormValid = email && password.length >= 5
 
@@ -26,24 +22,10 @@ export const SignUp = ({ closeModal, openModal, setUserName }) => {
         localStorage.setItem('loginTime', Date.now().toString())
         console.log('Saved to localStorage:', { name, email, password })
 
-
-        // const inputName = nameRef.current.value
-        // const inputEmail = emailRef.current.value
-        // const inputPassword = passwordRef.current.value
-
-        // setName(inputName)
-        // setEmail(inputEmail)
-        // setPassword(inputPassword)
         setUserName(name)
 
         closeModal()
     }
-
-    // useEffect(() => {
-    //     localStorage.setItem('userName', name)
-    //     localStorage.setItem('userEmail', email)
-    //     localStorage.setItem('userPassword', password)
-    // }, [name, email, password])
 
     return (
         <div onClick={closeModal} className={x.up__backdrop}>

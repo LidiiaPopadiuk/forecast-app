@@ -16,7 +16,7 @@ import { SignIn } from "./components/modals/SignIn";
 import { EditInfoModal } from "./components/modalEditInfo/EditInfoModal";
 import "./App.css";
 import { useState, useEffect } from "react";
-import { CardItem } from "./components/cards/CardItem";
+import { useTheme } from "./hooks/useTheme";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +29,6 @@ function App() {
   const [userName, setUserName] = useState(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const loginTime = localStorage.getItem("loginTime");
-    // const storedName = localStorage.getItem("")
 
     if (!isLoggedIn || !loginTime) return "";
 
@@ -50,12 +49,6 @@ function App() {
   const { news, addPage, isLoading } = useNews();
   const { nature } = useGallery();
   const { forecast } = useForecast(activeCity ? activeCity.name : "");
-
-  // useEffect(() => {
-  //   if (userName) {
-  //     localStorage.setItem("userName", userName);
-  //   }
-  // }, [userName]);
 
   useEffect(() => {
     if (isModalOpen || isSignInOpen || isEditInfoModal) {
@@ -103,6 +96,8 @@ function App() {
   const closeSignInModal = () => setIsSignInOpen(false);
   const openEditInfoModal = () => setIsEditInfoModal(true);
   const closeEditInfoModal = () => setIsEditInfoModal(false);
+
+  useTheme()
 
   return (
     <div className="App">

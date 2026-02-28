@@ -1,18 +1,21 @@
 .in {
-  padding: 28px 0;
+  padding: 25px 0;
   border-radius: 25px;
-  width: 600px;
-  height: 395px;
+  width: 293px;
+  height: 330px;
   background: #fff;
   margin: 0 auto;
   &__title {
     font-weight: 500;
-    font-size: 28px;
+    font-size: 20px;
     color: #000;
     font-family: "Montserrat Alternates", sans-serif;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
   &__btn {
+    font-weight: 400;
+    font-size: 12px;
+    color: #000;
     background: #ffb36c;
     border-radius: 10px;
     padding: 10px 30px;
@@ -21,42 +24,40 @@
   }
   &__label {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     color: #000;
     margin-bottom: 15px;
     text-align: left;
-    width: 439px;
+    width: 243px;
   }
   &__input {
-    outline: none;
+  outline: none;
     background: #e4e4e4;
     border-radius: 10px;
-    width: 440px;
-    height: 50px;
+    width: 243px;
+    height: 40px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     color: #888888;
-    padding: 17px 0 16px 20px;
+    padding: 12px 0 13px 20px;
+    border: none;
+    margin-bottom: 25px;
+  }
+  &__input2 {
+      outline: none;
+    background: #e4e4e4;
+    border-radius: 10px;
+    width: 243px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #888888;
+    padding: 12px 0 13px 20px;
     border: none;
     margin-bottom: 30px;
   }
-  &__input2 {
-    outline: none;
-    background: #e4e4e4;
-    border-radius: 10px;
-    width: 440px;
-    height: 50px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #888888;
-
-    // color: #ababab;
-    padding: 17px 0 16px 20px;
-    border: none;
-    margin-bottom: 35px;
-  }
   &__form {
-    display: flex;
+  display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -74,5 +75,110 @@
     -webkit-box-shadow: 0 0 0px 1000px #e4e4e4 inset;
     -webkit-text-fill-color: #888888;
     transition: background-color 5000s ease-in-out;
+  }
+}
+
+@media (min-width: 768px) {
+  .in {
+    padding: 30px 0;
+    width: 400px;
+    height: 321px;
+    &__title {
+      margin-bottom: 17px;
+    }
+    &__input {
+      width: 310px;
+      height: 40px;
+    }
+    &__label {
+      width: 310px;
+    }
+    &__input2 {
+      margin-bottom: 25px;
+      width: 310px;
+      height: 40px;
+    }
+    &__btn {
+      margin-bottom: 17px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .in {
+    padding: 28px 0;
+    border-radius: 25px;
+    width: 600px;
+    height: 395px;
+    background: #fff;
+    margin: 0 auto;
+    &__title {
+      font-weight: 500;
+      font-size: 28px;
+      color: #000;
+      font-family: "Montserrat Alternates", sans-serif;
+      margin-bottom: 40px;
+    }
+    &__btn {
+      background: #ffb36c;
+      border-radius: 10px;
+      padding: 10px 30px;
+      border: none;
+      margin-bottom: 15px;
+    }
+    &__label {
+      font-weight: 500;
+      font-size: 14px;
+      color: #000;
+      margin-bottom: 15px;
+      text-align: left;
+      width: 439px;
+    }
+    &__input {
+      outline: none;
+      background: #e4e4e4;
+      border-radius: 10px;
+      width: 440px;
+      height: 50px;
+      font-weight: 500;
+      font-size: 14px;
+      color: #888888;
+      padding: 17px 0 16px 20px;
+      border: none;
+      margin-bottom: 30px;
+    }
+    &__input2 {
+      outline: none;
+      background: #e4e4e4;
+      border-radius: 10px;
+      width: 440px;
+      height: 50px;
+      font-weight: 500;
+      font-size: 14px;
+      color: #888888;
+      padding: 17px 0 16px 20px;
+      border: none;
+      margin-bottom: 35px;
+    }
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.36);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    &__input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px #e4e4e4 inset;
+      -webkit-text-fill-color: #888888;
+      transition: background-color 5000s ease-in-out;
+    }
   }
 }

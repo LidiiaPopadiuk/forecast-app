@@ -5,7 +5,7 @@ import press from '../../img/pressure/press.svg'
 import rain from '../../img/pressure/rain.svg'
 import wind from '../../img/pressure/wind.svg'
 import React from 'react'
-export const DetailInfo = ({ infoCity, forecast, city }) => {
+export const DetailInfo = ({ forecast, city }) => {
     if (!city) return null
 
     const next24Hours = forecast && forecast.length ? forecast.slice(0, 8) : []
@@ -17,9 +17,6 @@ export const DetailInfo = ({ infoCity, forecast, city }) => {
         <div className={x.detail}>
             <div className='container'>
                 <ul className={x.detail__list}>
-                    {/* {infoCity.slice(-1).map(city => { */}
-                    {/* return ( */}
-                    {/* <React.Fragment key={city.id}> */}
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Feels like</p>
                         <h2 className={x.detail__degrees}>{city.main.feels_like}℃</h2>
@@ -51,9 +48,6 @@ export const DetailInfo = ({ infoCity, forecast, city }) => {
                         <h2 className={x.detail__degrees}>{city.visibility}</h2>
                         <img className={x.detail__imgDeegr} src={eye} alt="eye" />
                     </li>
-                    {/* </React.Fragment> */}
-                    {/* ) */}
-                    {/* })} */}
                 </ul>
             </div>
         </div>

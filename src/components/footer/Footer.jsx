@@ -1,6 +1,5 @@
 import x from './Footer.module.scss'
 import footerPng from '../../img/footerPng.png'
-import insta from '../../img/iinsta.svg'
 import insta2 from '../../img/instagram2.svg'
 import facebook from '../../img/facebb.svg'
 import whatsapp from '../../img/whatsapp.svg'
@@ -19,9 +18,9 @@ export const Footer = () => {
                     <div className={x.footer__social}>
                         <h3 className={x.footer__title}>Contact us</h3>
                         <div className={x.footer__wrappbtn}>
-                            <button className={x.footer__btn}><a target='_blanck' href="https://www.instagram.com/"><img className={x.footer__imgNav} src={insta2} alt="Instagram" /></a></button>
-                            <button className={x.footer__btn}><a target='_blanck' href="https://www.facebook.com/"><img className={x.footer__imgNav} src={facebook} alt="Facebook" /></a></button>
-                            <button className={x.footer__btn}><a target='_blanck' href="https://web.whatsapp.com/"><img className={x.footer__imgNav} src={whatsapp} alt="Whatsapp" /></a></button>
+                            <a target='_blanck' href="https://www.instagram.com/"><img className={x.footer__imgNav} src={insta2} alt="Instagram" /></a>
+                            <a target='_blanck' href="https://www.facebook.com/"><img className={x.footer__imgNav} src={facebook} alt="Facebook" /></a>
+                            <a target='_blanck' href="https://web.whatsapp.com/"><img className={x.footer__imgNav} src={whatsapp} alt="Whatsapp" /></a>
                         </div>
                     </div>
                     </div>

@@ -1,35 +1,22 @@
-import { useFetch } from "../../hooks/useFetch"
 import { PiArrowClockwiseBold } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaHeart } from "react-icons/fa";
-import { memo } from "react";
-import { CardItem } from "./CardItem";
+import { useState } from "react";
 import x from './Cards.module.scss'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import * as motion from "motion/react-client"
+
 
 export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refreshCity, setActiveCity, deleteCity, likeCity }) => {
 
-    // const Carditem = memo(({ item }) => {
-    // const utc = (item.refreshTime || Date.now()) + new Date().getTimezoneOffset() * 60000;
-    // const localTime = utc + item.timezone * 1000;
-    // const date = new Date(localTime);
-    // const time = date.toLocaleTimeString('uk-UA', {
-    //     hour: '2-digit',
-    //     minute: '2-digit'
-    // });
-
-    // const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-    // const fullDate = date.toLocaleDateString('uk-UA');
-    // })
+    const [rotation, setRotation] = useState(0);
 
     return (
-        <div className={x.cards}>
+        <div className={`${x.cards} ${infoCity.length === 0 ? x.cards_empty : ''}`}>
             <div className="container">
                 <ul className={x.cards__list}>
                     {infoCity.map(item => {
-                        // const loginInfo = localStorage.getItem("isLoggedIn")
-                        // const notifyLogin = () => toast('Register or Log In')
 
                         const utc = (item.refreshTime || Date.now()) + new Date().getTimezoneOffset() * 60000;
                         const localTime = utc + item.timezone * 1000;
@@ -41,7 +28,6 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
 
                         const day = date.toLocaleDateString('en-US', { weekday: 'long' });
                         const fullDate = date.toLocaleDateString('uk-UA');
-                        // return <CardItem key={item.id} item={item} userName={userName} refreshCity={refreshCity} weekInfo={weekInfo} hourInfo={hourInfo} detailInfo={detailInfo}></CardItem>
                         return (
                             <li className={x.cards__item} key={item.id}>
                                 <div className={x.cards__wrapperCity}>
@@ -71,14 +57,40 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     <h2 className={x.cards__deegr}>{Math.round(item.main.temp)}°C</h2>
                                 </div>
                                 <div className={x.cards__wrapperIcons}>
-                                    <p onClick={() => refreshCity(item.name)}><PiArrowClockwiseBold className={x.icon} /></p>
+                                    <motion.p
+                                        className={x.iconWrapper}
+                                        animate={{ rotate: rotation }}
+                                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                                        onClick={() => {
+                                            setRotation(prev => prev + 360);
+                                            refreshCity(item.name);
+                                        }}
+                                    >
+                                        <PiArrowClockwiseBold className={x.icon} />
+                                    </motion.p>
                                     <p onClick={() => likeCity(item.name)}><ToastContainer />
                                         {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" className={x.icon} />}</p>
                                     <button onClick={() => {
                                         setActiveCity(item)
                                         detailInfo()
                                     }} className={x.cards__btn}>See more</button>
-                                    <p onClick={() => deleteCity(item.name)}><RiDeleteBin6Line className={x.icon} /></p>
+                                    <motion.div
+                                        whileHover={{
+                                            y: -4,
+                                            rotate: [0, -8, 8, -4, 0],
+                                        }}
+                                        whileTap={{
+                                            scale: 0.9,
+                                        }}
+                                        transition={{
+                                            duration: 0.4,
+                                            ease: "easeInOut",
+                                        }}
+                                        style={{ cursor: "pointer" }}
+                                        onClick={() => deleteCity(item.name)}
+                                    >
+                                        <RiDeleteBin6Line className={x.icon} />
+                                    </motion.div>
                                 </div>
                             </li>
                         )
@@ -86,6 +98,6 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                     })}
                 </ul>
             </div>
-        </div>
+        </div >
     )
 }

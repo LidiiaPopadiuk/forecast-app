@@ -2,6 +2,14 @@ import x from './News.module.scss'
 import imageNo from '../../img/no-image.png'
 
 export const News = ({ petsInfo, addPage, isLoading }) => {
+
+    const truncateText = (text, maxLength = 60) => {
+        if (!text) return ''
+        return text.length > maxLength
+            ? text.slice(0, maxLength) + '...'
+            : text
+    }
+
     return (
         <div className={x.news}>
             <div className="container">
@@ -10,9 +18,9 @@ export const News = ({ petsInfo, addPage, isLoading }) => {
                     {petsInfo.map((pet, index) => {
                         return (
                             <li key={index} className={x.news__item}>
-                                <a target='_blank' className={x.news__link} href={pet.url}>
+                                <a target='_blank' className={x.news__link} href={pet.pageURL}>
                                     <img className={x.news__img} src={pet.largeImageURL || imageNo} alt={pet.title} />
-                                    <p className={x.news__parag}>{pet.tags}</p>
+                                    <p className={x.news__parag}>{pet.user}: {truncateText(pet.tags, 60)}</p>
                                 </a>
                             </li>
                         )

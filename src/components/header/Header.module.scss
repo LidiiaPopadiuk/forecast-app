@@ -2,6 +2,7 @@ $btn-color: #ffb36c;
 $text-color: #000;
 
 .header {
+  transition: background 0.3s ease;
   background: #fff;
   padding: 12px;
   position: relative;
@@ -25,15 +26,9 @@ $text-color: #000;
     display: none;
   }
   &__wrapper {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // // gap: 111px;
-    // gap: 245px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // gap: 360px;
     width: 100%;
   }
   &__list {
@@ -75,13 +70,10 @@ $text-color: #000;
   }
   &__authoriz {
     display: none;
-    // display: flex;
     align-items: center;
     gap: 27px;
   }
   &__username {
-    // font-weight: 500;
-    // font-size: 12px;
     color: #000;
     font-family: "Montserrat Alternates", sans-serif;
   }
@@ -124,9 +116,6 @@ $text-color: #000;
 }
 
 .mobileMenu {
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: flex-start;
   position: absolute;
   top: 54px;
   left: 0;
@@ -141,18 +130,11 @@ $text-color: #000;
   display: block;
 }
 
-// .mobileAuthoriz {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
 .mobileList {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 25px;
-  // margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
@@ -163,7 +145,6 @@ $text-color: #000;
       height: 40px;
     }
     &__wrapper {
-      // width: 65%;
       width: auto;
       gap: 57px;
     }

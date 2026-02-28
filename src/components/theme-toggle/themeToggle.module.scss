@@ -1,0 +1,34 @@
+.toggle {
+  width: 56px;
+  height: 28px;
+  background: #e6e6e6;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+/* кружечок */
+.thumb {
+  width: 24px;
+  height: 24px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  color: #111;
+
+  transition:
+    left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s ease,
+    color 0.3s ease;
+}

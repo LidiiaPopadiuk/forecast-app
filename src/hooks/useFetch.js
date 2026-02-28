@@ -48,7 +48,7 @@ export const useFetch = (userName) => {
       const saved = localStorage.getItem("cards");
       if (saved) setInfoCity(JSON.parse(saved));
     } else {
-      setInfoCity((prev) => prev.map(city => ({...city, isLiked: false})))
+      setInfoCity((prev) => prev.map((city) => ({ ...city, isLiked: false })));
     }
   }, [userName]);
 
@@ -79,34 +79,29 @@ export const useFetch = (userName) => {
   };
 
   const likeCity = (name) => {
-    const notifyLogin = () => toast("Register or Log In");
+    const notifyLogin = () =>
+      toast("Register or Log In", {
+        progressClassName: "toast-progress-orange",
+      });
     const loginInfo = localStorage.getItem("isLoggedIn");
 
-    if (loginInfo) {
-      setInfoCity((prev) => {
-        const index = prev.findIndex((city) => city.name === name);
-        if (index === -1) return prev;
-
-        const updated = [...prev];
-        const [selectedCity] = updated.splice(index, 1);
-
-        const newCity = {
-          ...selectedCity,
-          isLiked: !selectedCity.isLiked,
-          savedIndex: selectedCity.savedIndex ? selectedCity.savedIndex : index,
-        };
-
-        if (newCity.isLiked) {
-          updated.unshift(newCity);
-        } else {
-          updated.splice(newCity.savedIndex, 0, newCity);
-        }
-
-        return updated;
-      });
-    } else {
+    if (!loginInfo) {
       notifyLogin();
+      return;
     }
+
+
+    setInfoCity((prev) => {
+
+      const updated = prev.map((city) => {
+        return city.name === name ? { ...city, isLiked: !city.isLiked } : city;
+      });
+
+      return [
+        ...updated.filter((city) => city.isLiked),
+        ...updated.filter((city) => !city.isLiked),
+      ];
+    });
   };
 
   return { inputInfo, infoCity, city, refreshCity, deleteCity, likeCity };

@@ -1,14 +1,8 @@
 import x from './Hero.module.scss'
 import { useState, useRef, useEffect } from 'react'
 import { IoSearch } from "react-icons/io5";
-import { useFetch } from '../../hooks/useFetch';
 
 export const Hero = ({ inputInfo }) => {
-
-    const [month] = useState('October');
-    const [year] = useState('2025');
-    const [date] = useState('13th');
-    const [day] = useState('Friday');
     const [isTablet, setIsTablet] = useState(false)
 
     useEffect(() => {
@@ -22,9 +16,25 @@ export const Hero = ({ inputInfo }) => {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
+    const today = new Date()
+
+    const year = today.getFullYear()
+    const month = today.toLocaleString("en-US", { month: "long" })
+    const day = today.toLocaleString("en-US", { weekday: "long" })
+    const date = today.getDate()
+
+    const getOrdinal = (n) => {
+        if (n > 3 && n < 21) return 'th'
+        switch (n % 10) {
+            case 1: return 'st'
+            case 2: return 'nd'
+            case 3: return 'rd'
+            default: return 'th'
+        }
+    }
 
 
-    // const { inputInfo } = useFetch()
+
     const inputRef = useRef(null)
 
     const inputValue = (e) => {
@@ -47,7 +57,10 @@ export const Hero = ({ inputInfo }) => {
                             <div className={x.hero__bar}></div>
                             <div className={x.hero__date}>
                                 <p className={x.hero__paragg}>{month} {year}</p>
-                                <p className={x.hero__paragg}>{day} {date} </p>
+                                <p className={x.hero__paragg}>
+                                    {day} {date}
+                                    <sup className={x.hero__span}>{getOrdinal(date)}</sup>
+                                </p>
                             </div>
                         </>
                     ) : (
@@ -59,7 +72,10 @@ export const Hero = ({ inputInfo }) => {
                                 </p>
                                 <div className={x.hero__date}>
                                     <p className={x.hero__paragg}>{month} {year}</p>
-                                    <p className={x.hero__paragg}>{day} {date}</p>
+                                    <p className={x.hero__paragg}>
+                                        {day} {date}
+                                        <sup className={x.hero__span}>{getOrdinal(date)}</sup>
+                                    </p>
                                 </div>
                             </div>
                         </>

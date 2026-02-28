@@ -2,7 +2,6 @@
   padding: 30px 100px;
   border-radius: 25px;
   width: 550px;
-//   height: 240px;
   margin: 0 auto;
   background-color: #fff;
   display: flex;
@@ -29,11 +28,6 @@
     outline: none;
     margin-bottom: 5px;
   }
-  //   &__wrapper {
-  //     display: flex;
-  //     flex-direction: column;
-  //     align-items: flex-start;
-  //   }
   &__backdrop {
     position: fixed;
     inset: 0;

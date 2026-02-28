@@ -82,8 +82,14 @@ a {
   background-color: #ff9d41;
 }
 
-
 ::selection {
-  background-color: #ffb36c; 
+  background-color: #ffb36c;
   /* color: #fff; */
 }
+
+.Toastify__progress-bar {
+  background-color: #ffb36c !important;
+}
+ 
+
+
