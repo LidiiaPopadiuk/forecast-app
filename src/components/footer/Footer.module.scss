@@ -1,5 +1,6 @@
 .footer {
   padding: 30px;
+  padding-right: 100px;
   background: #ffb36c;
   &__logo {
     width: 50px;
@@ -14,12 +15,14 @@
   }
   &__parag {
     text-align: left;
+    line-height: 8px;
   }
   &__wrapper {
     display: flex;
     justify-content: start;
     align-items: flex-start;
-    gap: 103px;
+    justify-content: space-between;
+    // gap: 40px;
   }
   &__title {
     font-weight: 500;
@@ -70,10 +73,40 @@
   // }
 }
 
+@media (min-width: 768px) {
+  .footer {
+    padding: 35px 0 35px;
+    &__mainWrapper {
+      flex-direction: row;
+      gap: 100px;
+      height: 69px;
+    }
+    &__parag {
+      line-height: 8px;
+    }
+    &__wrapper {
+      gap: 100px;
+      justify-content: start;
+      align-items: flex-start;
+    }
+    &__social {
+      margin-top: 0;
+      align-items: flex-start;
+    }
+  }
+}
+
 @media (min-width: 1200px) {
   .footer {
     padding: 40px 0 64px;
     background: #ffb36c;
+    &__parag {
+      line-height: 14px;
+    }
+    &__logo {
+      width: 90px;
+      height: 62px;
+    }
     &__geo {
       width: 93px;
       display: flex;
@@ -88,6 +121,10 @@
       justify-content: start;
       align-items: flex-start;
       gap: 103px;
+    }
+    &__imgNav {
+      width: 40px;
+      height: 40px;
     }
     &__title {
       font-weight: 500;
@@ -114,6 +151,10 @@
       gap: 20px;
       justify-content: center;
       align-items: center;
+    }
+    &__mainWrapper {
+      height: auto;
+      align-items: flex-start;
     }
     &__image {
       width: 384px;

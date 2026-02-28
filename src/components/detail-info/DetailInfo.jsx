@@ -23,7 +23,7 @@ export const DetailInfo = ({ infoCity, forecast, city }) => {
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Feels like</p>
                         <h2 className={x.detail__degrees}>{city.main.feels_like}℃</h2>
-                        <img src={degr} alt="degrees" />
+                        <img className={x.detail__imgDeegr} src={degr} alt="degrees" />
                     </li>
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Min ℃</p>
@@ -34,22 +34,22 @@ export const DetailInfo = ({ infoCity, forecast, city }) => {
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Humidity</p>
                         <h2 className={x.detail__degrees}>{city.main.humidity}%</h2>
-                        <img src={rain} alt="rain" />
+                        <img className={x.detail__imgDeegr} src={rain} alt="rain" />
                     </li>
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Pressure</p>
                         <h2 className={x.detail__degrees}>{city.main.pressure} Pa</h2>
-                        <img src={press} alt="pressure" />
+                        <img className={x.detail__imgDeegr} src={press} alt="pressure" />
                     </li>
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Wind speed</p>
                         <h2 className={x.detail__degrees}>{city.wind.speed} m/s</h2>
-                        <img src={wind} alt="wind" />
+                        <img className={x.detail__imgDeegr} src={wind} alt="wind" />
                     </li>
                     <li className={x.detail__item}>
                         <p className={x.detail__title}>Visibility</p>
                         <h2 className={x.detail__degrees}>{city.visibility}</h2>
-                        <img src={eye} alt="eye" />
+                        <img className={x.detail__imgDeegr} src={eye} alt="eye" />
                     </li>
                     {/* </React.Fragment> */}
                     {/* ) */}

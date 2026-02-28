@@ -1,5 +1,5 @@
 .hour {
-  margin-bottom: 80px;
+  margin-bottom: 35px;
   &__title {
     margin-bottom: 20px;
     text-align: left;
@@ -8,9 +8,43 @@
     color: #000;
     margin-left: 35px;
   }
+  &__chart {
+    flex: 1;
+    position: relative;
+  }
   &__wrapper {
     border-radius: 20px;
     background: #e8e8e8;
-    padding: 26px 40px 40px;
+    padding: 18px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    height: 370px;
+    width: 293px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hour {
+    margin-bottom: 80px;
+    &__title {
+      margin-bottom: 20px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 16px;
+      color: #000;
+      margin-left: 35px;
+    }
+    &__wrapper {
+      border-radius: 20px;
+      background: #e8e8e8;
+      padding: 26px 40px 40px;
+      width: 100%;
+      // width: 1140px;
+      height: 554px;
+      height: none;
+      // margin: 0;
+      max-width: 1140px;
+    }
   }
 }

@@ -71,14 +71,14 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     <h2 className={x.cards__deegr}>{Math.round(item.main.temp)}°C</h2>
                                 </div>
                                 <div className={x.cards__wrapperIcons}>
-                                    <p onClick={() => refreshCity(item.name)}><PiArrowClockwiseBold size={30} /></p>
+                                    <p onClick={() => refreshCity(item.name)}><PiArrowClockwiseBold className={x.icon} /></p>
                                     <p onClick={() => likeCity(item.name)}><ToastContainer />
-                                        {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" size={30} />}</p>
+                                        {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" className={x.icon} />}</p>
                                     <button onClick={() => {
                                         setActiveCity(item)
                                         detailInfo()
                                     }} className={x.cards__btn}>See more</button>
-                                    <p onClick={() => deleteCity(item.name)}><RiDeleteBin6Line size={30} /></p>
+                                    <p onClick={() => deleteCity(item.name)}><RiDeleteBin6Line className={x.icon} /></p>
                                 </div>
                             </li>
                         )
