@@ -6,7 +6,7 @@ export const useTheme = () => {
   );
 
   useEffect(() => {
-    document.body.className = theme; // 👈 ВАЖЛИВО
+    document.body.className = theme; 
     localStorage.setItem("theme", theme);
   }, [theme]);
 

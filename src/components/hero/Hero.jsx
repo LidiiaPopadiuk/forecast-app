@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react'
 import { IoSearch } from "react-icons/io5";
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { ToastContainer, toast } from 'react-toastify';
 
 
 export const Hero = ({ inputInfo }) => {
@@ -101,7 +100,6 @@ export const Hero = ({ inputInfo }) => {
                 <form onSubmit={inputValue} className={x.hero__form}>
                     <input ref={inputRef} placeholder='Search location...' className={x.hero__input} type="text" />
                     <button className={x.hero__btn}><IoSearch className={x.btnSearch} /></button>
-                    {/* <ToastContainer /> */}
                 </form>
             </div>
         </div>

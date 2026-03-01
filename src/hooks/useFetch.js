@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 export const useFetch = (userName) => {
@@ -25,7 +25,6 @@ export const useFetch = (userName) => {
       try {
         const infoFetch = await axios.get(API);
         setInfoCity((prev) => {
-          // if (prev.some((n) => n.name === infoFetch.data.name)) return prev;
           const exists = prev.some((n) => n.name === infoFetch.data.name);
           if (exists) {
             toast("City has been already added 👀", {

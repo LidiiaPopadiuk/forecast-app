@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+import { ErrorPage } from "./components/error-page/ErrorPage";
 import { Header } from "./components/header/Header";
 import { Hero } from "./components/hero/Hero";
 import { Cards } from "./components/cards/Cards";
@@ -17,7 +19,7 @@ import { EditInfoModal } from "./components/modalEditInfo/EditInfoModal";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -108,61 +110,83 @@ function App() {
         openSignInModal={openSignInModal}
         openModal={openSignUpModal}
       ></Header>
-      <Hero inputInfo={inputInfo}></Hero>
-      {isModalOpen && (
-        <SignUp
-          setUserName={setUserName}
-          openModal={openSignInModal}
-          closeModal={closeSignUpModal}
-        ></SignUp>
-      )}
-      {isSignInOpen && (
-        <SignIn
-          setUserName={setUserName}
-          closeModal={closeSignInModal}
-        ></SignIn>
-      )}
-      {isEditInfoModal && (
-        <EditInfoModal
-          setUserName={setUserName}
-          closeEditInfoModal={closeEditInfoModal}
-        ></EditInfoModal>
-      )}
-      <Cards
-        likeCity={likeCity}
-        deleteCity={deleteCity}
-        setActiveCity={setActiveCity}
-        weekInfo={showWeekInfo}
-        refreshCity={refreshCity}
-        userName={userName}
-        hourInfo={showHourInfo}
-        detailInfo={showDetailInfo}
-        infoCity={infoCity}
-      ></Cards>
-      {showDetail && activeCity && (
-        <DetailInfo
-          city={activeCity}
-          forecast={forecast}
-          infoCity={infoCity}
-        ></DetailInfo>
-      )}
-      {showHour && forecast && forecast.length > 0 && (
-        <HourlyForecast hourlyWeather={forecast}></HourlyForecast>
-      )}
-      {showWeek && forecast && forecast.length > 0 && (
-        <WeekForecast city={city} infoForecast={forecast}></WeekForecast>
-      )}
-      <News isLoading={isLoading} addPage={addPage} petsInfo={news}></News>
-      <Gallery natureInfo={nature}></Gallery>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero inputInfo={inputInfo}></Hero>
+              {isModalOpen && (
+                <SignUp
+                  setUserName={setUserName}
+                  openModal={openSignInModal}
+                  closeModal={closeSignUpModal}
+                ></SignUp>
+              )}
+              {isSignInOpen && (
+                <SignIn
+                  setUserName={setUserName}
+                  closeModal={closeSignInModal}
+                ></SignIn>
+              )}
+              {isEditInfoModal && (
+                <EditInfoModal
+                  setUserName={setUserName}
+                  closeEditInfoModal={closeEditInfoModal}
+                ></EditInfoModal>
+              )}
+              <Cards
+                likeCity={likeCity}
+                deleteCity={deleteCity}
+                setActiveCity={setActiveCity}
+                weekInfo={showWeekInfo}
+                refreshCity={refreshCity}
+                userName={userName}
+                hourInfo={showHourInfo}
+                detailInfo={showDetailInfo}
+                infoCity={infoCity}
+              ></Cards>
+              {showDetail && activeCity && (
+                <DetailInfo
+                  city={activeCity}
+                  forecast={forecast}
+                  infoCity={infoCity}
+                ></DetailInfo>
+              )}
+              {showHour && forecast && forecast.length > 0 && (
+                <HourlyForecast hourlyWeather={forecast}></HourlyForecast>
+              )}
+              {showWeek && forecast && forecast.length > 0 && (
+                <WeekForecast
+                  city={city}
+                  infoForecast={forecast}
+                ></WeekForecast>
+              )}
+              <News
+                isLoading={isLoading}
+                addPage={addPage}
+                petsInfo={news}
+              ></News>
+              <Gallery natureInfo={nature}></Gallery>
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick
+                pauseOnHover
+                draggable
+              />
+            </>
+          }
+        />
+
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
       <Footer></Footer>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-      />
     </div>
   );
 }

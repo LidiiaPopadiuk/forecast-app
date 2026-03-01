@@ -4,7 +4,6 @@ import degr from '../../img/pressure/degr.svg'
 import press from '../../img/pressure/press.svg'
 import rain from '../../img/pressure/rain.svg'
 import wind from '../../img/pressure/wind.svg'
-import React from 'react'
 export const DetailInfo = ({ forecast, city }) => {
     if (!city) return null
 

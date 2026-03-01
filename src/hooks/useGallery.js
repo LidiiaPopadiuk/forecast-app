@@ -27,7 +27,6 @@ export const useGallery = () => {
       );
       setNature(filtered);
 
-      // setNature(nature.data.hits);
     } catch (err) {
       console.log(err);
     }

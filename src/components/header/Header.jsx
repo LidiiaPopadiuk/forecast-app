@@ -4,8 +4,7 @@ import userLogin from '../../img/userlogin.png'
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
 import x from './Header.module.scss'
-import { ThemeToggle } from '../theme-toggle/themeToggle';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ThemeToggle } from '../theme-toggle/themeToggle';
 
 export const Header = ({ openModal, userName, openSignInModal, openEditInfoModal }) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -60,11 +59,10 @@ export const Header = ({ openModal, userName, openSignInModal, openEditInfoModal
                         </div>
                     </div>
                     <div className={x.header__authoriz}>
-                        <ThemeToggle />
+                        {/* <ThemeToggle /> */}
                         {userName ? <p className={x.header__username}>Hey, {userName}!</p> : <button onClick={openModal} className={x.header__sign}>Sign Up</button>}
                         <button onClick={porfileClick} className={x.header__profile}>
                             <img className={x.header__imgProfile} src={userLogin} alt="img user login" />
-                            {/* <ToastContainer /> */}
                         </button>
                     </div>
                 </div>

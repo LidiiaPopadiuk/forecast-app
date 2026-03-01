@@ -30,11 +30,9 @@ export const Gallery = ({ natureInfo }) => {
                 >
                     {natureInfo.map((img) => (
                         <SwiperSlide key={img.id}>
-                            {/* <div data-aos="flip-down"> */}
                                 <div className="slide-wrapper">
                                     <img className={x.gall__img} src={img.largeImageURL} alt={img.tags} />
                                 </div>
-                            {/* </div> */}
                         </SwiperSlide>
                     ))}
                 </Swiper>

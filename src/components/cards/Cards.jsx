@@ -4,7 +4,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 import x from './Cards.module.scss'
-import { ToastContainer } from 'react-toastify';
 import * as motion from "motion/react-client"
 
 
@@ -57,7 +56,6 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     <h2 className={x.cards__deegr}>{Math.round(item.main.temp)}°C</h2>
                                 </div>
                                 <div className={x.cards__wrapperIcons}>
-                                    {/* <p onClick={() => refreshCity(item.name)}><PiArrowClockwiseBold size={30} /></p> */}
                                     <motion.p
                                         className={x.iconWrapper}
                                         animate={{ rotate: rotations[item.id] || 0 }}
@@ -72,8 +70,6 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     >
                                         <PiArrowClockwiseBold className={x.icon} />
                                     </motion.p>
-                                    {/* <p onClick={() => likeCity(item.name)}><ToastContainer />
-                                        {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" className={x.icon} />}</p> */}
                                     <motion.p
                                         onClick={() => likeCity(item.name)}
                                         whileTap={{
