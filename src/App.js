@@ -20,6 +20,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
 import { ToastContainer } from "react-toastify";
+import { div } from "motion/react-client";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,13 +82,53 @@ function App() {
     };
   }, []);
 
-  const showDetailInfo = () => {
-    console.log("clicked see more");
-    setShowDetail((prev) => !prev);
+  const showDetailInfo = (city) => {
+    if (activeCity && activeCity.id === city.id) {
+      setShowDetail((prev) => !prev);
+    } else {
+      setActiveCity(city);
+      setShowDetail(true);
+    }
+
+    setTimeout(() => {
+      const el = document.getElementById("detail");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
   };
 
-  const showWeekInfo = () => setShowWeek((prev) => !prev);
-  const showHourInfo = () => setShowHour((prev) => !prev);
+  const showWeekInfo = (city) => {
+    if (activeCity && activeCity.id === city.id) {
+      setShowWeek((prev) => !prev);
+    } else {
+      setActiveCity(city);
+      setShowWeek(true);
+    }
+
+    setTimeout(() => {
+      const el = document.getElementById("week");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
+
+  const showHourInfo = (city) => {
+    if (activeCity && activeCity.id === city.id) {
+      setShowHour((prev) => !prev);
+    } else {
+      setActiveCity(city);
+      setShowHour(true);
+    }
+
+    setTimeout(() => {
+      const el = document.getElementById("hourly");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
 
   const openSignUpModal = () => setIsModalOpen(true);
   const closeSignUpModal = () => setIsModalOpen(false);
@@ -148,20 +189,26 @@ function App() {
                 infoCity={infoCity}
               ></Cards>
               {showDetail && activeCity && (
-                <DetailInfo
-                  city={activeCity}
-                  forecast={forecast}
-                  infoCity={infoCity}
-                ></DetailInfo>
+                <div id="detail">
+                  <DetailInfo
+                    city={activeCity}
+                    forecast={forecast}
+                    infoCity={infoCity}
+                  ></DetailInfo>
+                </div>
               )}
               {showHour && forecast && forecast.length > 0 && (
-                <HourlyForecast hourlyWeather={forecast}></HourlyForecast>
+                <div id="hourly">
+                  <HourlyForecast hourlyWeather={forecast}></HourlyForecast>
+                </div>
               )}
               {showWeek && forecast && forecast.length > 0 && (
-                <WeekForecast
-                  city={city}
-                  infoForecast={forecast}
-                ></WeekForecast>
+                <div id="week">
+                  <WeekForecast
+                    city={city}
+                    infoForecast={forecast}
+                  ></WeekForecast>
+                </div>
               )}
               <News
                 isLoading={isLoading}

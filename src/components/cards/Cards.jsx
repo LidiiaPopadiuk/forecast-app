@@ -38,11 +38,11 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     <div className={x.cards__btnwrapper}>
                                         <button onClick={() => {
                                             setActiveCity(item)
-                                            hourInfo()
+                                            hourInfo(item)
                                         }} className={x.cards__btn}>Hourly forecast</button>
                                         {userName && <button onClick={() => {
                                             setActiveCity(item)
-                                            weekInfo()
+                                            weekInfo(item)
                                         }} className={x.cards__btn}>Weekly forecast</button>}
                                     </div>
                                     <div className={x.cards__wrapperDay}>
@@ -89,7 +89,7 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     </motion.p>
                                     <button onClick={() => {
                                         setActiveCity(item)
-                                        detailInfo()
+                                        detailInfo(item)
                                     }} className={x.cards__btn}>See more</button>
                                     <motion.div
                                         whileHover={{
