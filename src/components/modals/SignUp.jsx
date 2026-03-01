@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import x from './SignUp.module.scss'
 import { useState } from 'react'
 
@@ -8,10 +9,21 @@ export const SignUp = ({ closeModal, openModal, setUserName }) => {
 
     const isFormValid = email && password.length >= 5
 
-
     const submitted = (e) => {
         e.preventDefault()
         console.log('submitted');
+
+        if (password.length < 5) {
+            toast("Password must be at least 5 characters long!");
+            return;
+        }
+
+        const savedEmail = localStorage.getItem('userEmail')
+
+        if (savedEmail === email) {
+            toast("An account with this email already exists. Please log in.")
+            return
+        }
 
         if (!isFormValid) return
         localStorage.setItem('userName', name)
@@ -40,7 +52,7 @@ export const SignUp = ({ closeModal, openModal, setUserName }) => {
                     <input className={x.up__input2} id='password' placeholder='Password' type="password" onChange={(e) => setPassword(e.target.value)} required />
                 </form>
                 <div>
-                    <button disabled={!isFormValid} type='submit' className={x.up__btn} onClick={submitted}>Sign up</button>
+                    <button type='submit' className={x.up__btn} onClick={submitted}>Sign up</button>
                     <p className={x.up__parag}>Already have an account? <span onClick={openModal} className={x.up__span}>Log In</span></p>
                 </div>
             </div>

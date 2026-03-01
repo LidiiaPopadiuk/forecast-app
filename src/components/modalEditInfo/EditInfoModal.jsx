@@ -1,4 +1,6 @@
 import x from './EditInfoModal.module.scss'
+import { toast } from 'react-toastify'
+
 
 export const EditInfoModal = ({ closeEditInfoModal, setUserName }) => {
     const nameInfoUser = localStorage.getItem('userName')
@@ -8,6 +10,7 @@ export const EditInfoModal = ({ closeEditInfoModal, setUserName }) => {
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("loginTime");
 
+        toast("Successfully logged out 👋")
         setUserName("")
         closeEditInfoModal()
     }

@@ -32,6 +32,11 @@ $text: #000;
     font-weight: 500;
     font-size: 9px;
     color: $text;
+    &:hover {
+      background-color: #ff9d41;
+      box-shadow: 0 6px 16px rgba(255, 157, 65, 0.35);
+      transform: translateY(-1px);
+    }
     // margin-bottom: 15px;
     // margin-right: 23px;
     // margin-left: 23px;
@@ -100,9 +105,9 @@ $text: #000;
   .cards {
     padding: 50px 0 50px;
     &__img {
-    width: 106px;
-    height: 106px;
-  }
+      width: 106px;
+      height: 106px;
+    }
     &__list {
       flex-wrap: wrap;
       justify-content: space-between;

@@ -1,6 +1,5 @@
 import x from './Gallery.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -31,9 +30,11 @@ export const Gallery = ({ natureInfo }) => {
                 >
                     {natureInfo.map((img) => (
                         <SwiperSlide key={img.id}>
-                            <div className="slide-wrapper">
-                                <img className={x.gall__img} src={img.largeImageURL} alt={img.tags} />
-                            </div>
+                            {/* <div data-aos="flip-down"> */}
+                                <div className="slide-wrapper">
+                                    <img className={x.gall__img} src={img.largeImageURL} alt={img.tags} />
+                                </div>
+                            {/* </div> */}
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -10,10 +10,10 @@ import * as motion from "motion/react-client"
 
 export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refreshCity, setActiveCity, deleteCity, likeCity }) => {
 
-    const [rotation, setRotation] = useState(0);
+    const [rotations, setRotations] = useState({});
 
     return (
-        <div className={`${x.cards} ${infoCity.length === 0 ? x.cards_empty : ''}`}>
+        <div id="cards" className={`${x.cards} ${infoCity.length === 0 ? x.cards_empty : ''}`}>
             <div className="container">
                 <ul className={x.cards__list}>
                     {infoCity.map(item => {
@@ -57,19 +57,40 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                                     <h2 className={x.cards__deegr}>{Math.round(item.main.temp)}°C</h2>
                                 </div>
                                 <div className={x.cards__wrapperIcons}>
+                                    {/* <p onClick={() => refreshCity(item.name)}><PiArrowClockwiseBold size={30} /></p> */}
                                     <motion.p
                                         className={x.iconWrapper}
-                                        animate={{ rotate: rotation }}
+                                        animate={{ rotate: rotations[item.id] || 0 }}
                                         transition={{ duration: 0.6, ease: "easeInOut" }}
                                         onClick={() => {
-                                            setRotation(prev => prev + 360);
+                                            setRotations(prev => ({
+                                                ...prev,
+                                                [item.id]: (prev[item.id] || 0) + 360
+                                            }));
                                             refreshCity(item.name);
                                         }}
                                     >
                                         <PiArrowClockwiseBold className={x.icon} />
                                     </motion.p>
-                                    <p onClick={() => likeCity(item.name)}><ToastContainer />
-                                        {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" className={x.icon} />}</p>
+                                    {/* <p onClick={() => likeCity(item.name)}><ToastContainer />
+                                        {item.isLiked ? <FaHeart color="red" size={30} /> : <FaRegHeart fill="red" className={x.icon} />}</p> */}
+                                    <motion.p
+                                        onClick={() => likeCity(item.name)}
+                                        whileTap={{
+                                            x: [0, -2, 2, -1, 1, 0],
+                                        }}
+                                        transition={{
+                                            duration: 0.25,
+                                            ease: "easeInOut",
+                                        }}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        {item.isLiked ? (
+                                            <FaHeart color="red" size={30} />
+                                        ) : (
+                                            <FaRegHeart color="red" size={30} />
+                                        )}
+                                    </motion.p>
                                     <button onClick={() => {
                                         setActiveCity(item)
                                         detailInfo()
@@ -98,6 +119,6 @@ export const Cards = ({ infoCity, detailInfo, hourInfo, weekInfo, userName, refr
                     })}
                 </ul>
             </div>
-        </div >
+        </div>
     )
 }

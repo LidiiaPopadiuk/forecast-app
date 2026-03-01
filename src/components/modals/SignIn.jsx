@@ -1,5 +1,6 @@
 import x from './SignIn.module.scss'
 import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 
 export const SignIn = ({ closeModal, setUserName }) => {
 
@@ -20,9 +21,10 @@ export const SignIn = ({ closeModal, setUserName }) => {
             localStorage.setItem('loginTime', Date.now().toString())
 
             setUserName(storedName)
+            toast('You have successfully logged in 😊');
             closeModal()
         } else {
-            alert('Wrong email or password')
+            toast('Wrong email or password!');
         }
     }
 

@@ -6,7 +6,7 @@ import whatsapp from '../../img/whatsapp.svg'
 
 export const Footer = () => {
     return (
-        <footer className={x.footer}>
+        <footer id="contacts" className={x.footer}>
             <div className='container'>
                 <div className={x.footer__wrapper}>
                     <img className={x.footer__logo} src={footerPng} alt="logo" />

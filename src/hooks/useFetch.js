@@ -25,14 +25,29 @@ export const useFetch = (userName) => {
       try {
         const infoFetch = await axios.get(API);
         setInfoCity((prev) => {
-          if (prev.some((n) => n.name === infoFetch.data.name)) return prev;
+          // if (prev.some((n) => n.name === infoFetch.data.name)) return prev;
+          const exists = prev.some((n) => n.name === infoFetch.data.name);
+          if (exists) {
+            toast("City has been already added 👀", {
+              toastId: "city-exists",
+            });
+            return prev;
+          }
           return [
             ...prev,
             { ...infoFetch.data, id: Date.now(), refreshTime: Date.now() },
           ];
         });
       } catch (err) {
-        console.log(err);
+        if (err.response && err.response.status === 404) {
+          toast("City not found 🌍", {
+            toastId: "city-not-found",
+          });
+        } else {
+          toast("Something went wrong 😢", {
+            toastId: "unknown-error",
+          });
+        }
       }
     };
     apiGet();
@@ -76,6 +91,7 @@ export const useFetch = (userName) => {
 
   const deleteCity = (name) => {
     setInfoCity((prev) => prev.filter((city) => city.name !== name));
+    toast("Card was successfully deleted")
   };
 
   const likeCity = (name) => {
@@ -90,9 +106,7 @@ export const useFetch = (userName) => {
       return;
     }
 
-
     setInfoCity((prev) => {
-
       const updated = prev.map((city) => {
         return city.name === name ? { ...city, isLiked: !city.isLiked } : city;
       });

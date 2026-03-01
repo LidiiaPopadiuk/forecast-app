@@ -17,6 +17,7 @@ import { EditInfoModal } from "./components/modalEditInfo/EditInfoModal";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -97,7 +98,7 @@ function App() {
   const openEditInfoModal = () => setIsEditInfoModal(true);
   const closeEditInfoModal = () => setIsEditInfoModal(false);
 
-  useTheme()
+  useTheme();
 
   return (
     <div className="App">
@@ -154,6 +155,14 @@ function App() {
       <News isLoading={isLoading} addPage={addPage} petsInfo={news}></News>
       <Gallery natureInfo={nature}></Gallery>
       <Footer></Footer>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </div>
   );
 }

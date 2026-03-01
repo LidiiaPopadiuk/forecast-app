@@ -21,6 +21,11 @@
     padding: 10px 30px;
     border: none;
     margin-bottom: 15px;
+    &:hover {
+      background-color: #ff9d41;
+      box-shadow: 0 6px 16px rgba(255, 157, 65, 0.35);
+      transform: translateY(-1px);
+    }
   }
   &__label {
     font-weight: 500;
